@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigro - Tu guía para trámites de USCIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #f72585;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #06ffa5;
+            --warning-color: #ffbe0b;
+            --danger-color: #fb5607;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .disclaimer {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 30px auto;
+            max-width: 800px;
+            font-size: 0.9rem;
+        }
+
+        .disclaimer i {
+            margin-right: 8px;
+            color: var(--warning-color);
+        }
+
+        .wizard-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: -30px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            position: relative;
+            flex: 1 1 calc(50% - 15px);
+            min-width: 200px;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-option label {
+            display: block;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .radio-option label:hover {
+            border-color: var(--primary-color);
+        }
+
+        .radio-option i {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:disabled {
+            background-color: #adb5bd;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .result-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .result-card p {
+            margin-bottom: 15px;
+        }
+
+        .result-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .result-link i {
+            margin-left: 8px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .alert-warning {
+            background-color: rgba(255, 190, 11, 0.1);
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .alert-danger {
+            background-color: rgba(251, 86, 7, 0.1);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .alert-info {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1 1 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .radio-option {
+                flex: 1 1 100%;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-group .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hands-holding-circle"></i>
+                    <div class="logo-text">
+                        <span class="logo-main">Amigro</span>
+                        <span class="logo-sub">Tu guía para trámites de USCIS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Guía para trámites de inmigración en Estados Unidos</h1>
+            <p>Te ayudaremos a identificar el proceso correcto para tu situación específica y te proporcionaremos enlaces directos a los recursos oficiales de USCIS.</p>
+            
+            <div class="disclaimer">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Aviso legal:</strong> Esta aplicación no proporciona asesoría legal. La información es de carácter general. Para decisiones sobre tu caso específico, consulta la página oficial de USCIS y/o un abogado de inmigración.
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="wizard-container">
+            <!-- Paso 1: Estatus actual -->
+            <div class="step active" id="step1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">¿Cuál es tu estatus migratorio actual?</h2>
+                </div>
+                
+                <div class="form-group">
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="status-tourist" name="current-status" value="tourist">
+                            <label for="status-tourist">
+                                <i class="fas fa-plane"></i>
+                                Turista (B1/B2)
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="status-student" name="current-status" value="student">
+                            <label for="status-student">
+                                <i class="fas fa-graduation-cap"></i>
+                                Estudiante (F-1/J-1)
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="status-dependent" name="current-status" value="dependent">
+                            <label for="status-dependent">
+                                <i class="fas fa-users"></i>
+                                Dependiente (H-4, F-2, etc.)
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="status-other" name="current-status" value="other">
+                            <label for="status-other">
+                                <i class="fas fa-question-circle"></i>
+                                Otro estatus no inmigrante
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <div></div>
+                    <button class="btn" id="next-step-1" disabled>Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Paso 2: Qué quiere hacer -->
+            <div class="step" id="step2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">¿Qué quieres hacer?</h2>
+                </div>
+                
+                <div class="form-group">
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="action-extend" name="action" value="extend">
+                            <label for="action-extend">
+                                <i class="fas fa-clock"></i>
+                                Extender mi estadía con el mismo estatus
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="action-change" name="action" value="change">
+                            <label for="action-change">
+                                <i class="fas fa-exchange-alt"></i>
+                                Cambiar de estatus
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-secondary" id="prev-step-2">Anterior</button>
+                    <button class="btn" id="next-step-2" disabled>Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Paso 3: Validación de I-94 -->
+            <div class="step" id="step3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">Validación de tu I-94</h2>
+                </div>
+                
+                <div class="form-group">
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="i94-valid" name="i94-status" value="valid">
+                            <label for="i94-valid">
+                                <i class="fas fa-check-circle"></i>
+                                Mi I-94 sigue vigente
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="i94-expired" name="i94-status" value="expired">
+                            <label for="i94-expired">
+                                <i class="fas fa-times-circle"></i>
+                                Mi I-94 ya venció
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Importante:</strong> Puedes consultar tu I-94 en el sitio oficial de <a href="https://i94.cbp.dhs.gov/" target="_blank">CBP</a>.
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-secondary" id="prev-step-3">Anterior</button>
+                    <button class="btn" id="next-step-3" disabled>Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Paso 4: Información adicional (solo para cambio de estatus) -->
+            <div class="step" id="step4">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h2 class="step-title">Información adicional</h2>
+                </div>
+                
+                <div id="extend-info" style="display: none;">
+                    <p>Para extender tu estatus actual, necesitarás:</p>
+                    <ul>
+                        <li>Completar el Formulario I-539</li>
+                        <li>Pagar la tarifa correspondiente</li>
+                        <li>Proporcionar documentación que respalde tu solicitud</li>
+                    </ul>
+                </div>
+                
+                <div id="change-info" style="display: none;">
+                    <p>Para cambiar de estatus, necesitamos saber más información:</p>
+                    
+                    <div class="form-group">
+                        <label>¿A qué estatus quieres cambiar?</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="to-student" name="change-to" value="student">
+                                <label for="to-student">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    Estudiante (F-1)
+                                </label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="to-other" name="change-to" value="other">
+                                <label for="to-other">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Otro estatus no inmigrante
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="student-info" style="display: none;">
+                        <div class="form-group">
+                            <label>¿Quieres estudiar a tiempo completo?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="study-yes" name="study-fulltime" value="yes">
+                                    <label for="study-yes">
+                                        <i class="fas fa-check"></i>
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="study-no" name="study-fulltime" value="no">
+                                    <label for="study-no">
+                                        <i class="fas fa-times"></i>
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-secondary" id="prev-step-4">Anterior</button>
+                    <button class="btn" id="next-step-4" disabled>Ver resultados</button>
+                </div>
+            </div>
+
+            <!-- Resultados -->
+            <div class="step" id="step5">
+                <div class="step-header">
+                    <div class="step-number">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="step-title">Recomendaciones para tu caso</h2>
+                </div>
+                
+                <div id="result-content">
+                    <!-- El contenido se generará dinámicamente según las respuestas -->
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-secondary" id="restart">Comenzar de nuevo</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Amigro</h3>
+                    <p>Tu guía para trámites de USCIS. Te proporcionamos información general y enlaces a recursos oficiales.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recursos útiles</h3>
+                    <ul>
+                        <li><a href="https://www.uscis.gov/es/i-539" target="_blank">Formulario I-539 en USCIS</a></li>
+                        <li><a href="https://i94.cbp.dhs.gov/" target="_blank">Consulta tu I-94</a></li>
+                        <li><a href="https://www.ice.gov/sevis/school-search" target="_blank">Escuelas certificadas SEVP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Aviso legal</h3>
+                    <p>Esta aplicación no proporciona asesoría legal. La información es de carácter general. Para decisiones sobre tu caso específico, consulta la página oficial de USCIS y/o un abogado de inmigración.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Amigro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Variables para almacenar las respuestas del usuario
+        let userAnswers = {
+            currentStatus: '',
+            action: '',
+            i94Status: '',
+            changeTo: '',
+            studyFulltime: ''
+        };
+
+        // Referencias a elementos del DOM
+        const steps = document.querySelectorAll('.step');
+        const nextButtons = document.querySelectorAll('[id^="next-step-"]');
+        const prevButtons = document.querySelectorAll('[id^="prev-step-"]');
+        const restartButton = document.getElementById('restart');
+        
+        // Manejadores de eventos para los botones de siguiente
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const stepNumber = parseInt(button.id.split('-')[2]);
+                if (validateStep(stepNumber)) {
+                    showStep(stepNumber + 1);
+                }
+            });
+        });
+        
+        // Manejadores de eventos para los botones de anterior
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const stepNumber = parseInt(button.id.split('-')[2]);
+                showStep(stepNumber - 1);
+            });
+        });
+        
+        // Botón de reinicio
+        restartButton.addEventListener('click', () => {
+            resetWizard();
+            showStep(1);
+        });
+        
+        // Validar paso actual
+        function validateStep(stepNumber) {
+            let isValid = false;
+            
+            switch(stepNumber) {
+                case 1:
+                    const statusSelected = document.querySelector('input[name="current-status"]:checked');
+                    if (statusSelected) {
+                        userAnswers.currentStatus = statusSelected.value;
+                        isValid = true;
+                    }
+                    break;
+                    
+                case 2:
+                    const actionSelected = document.querySelector('input[name="action"]:checked');
+                    if (actionSelected) {
+                        userAnswers.action = actionSelected.value;
+                        isValid = true;
+                        
+                        // Preparar el paso 4 según la acción seleccionada
+                        if (userAnswers.action === 'extend') {
+                            document.getElementById('extend-info').style.display = 'block';
+                            document.getElementById('change-info').style.display = 'none';
+                        } else {
+                            document.getElementById('extend-info').style.display = 'none';
+                            document.getElementById('change-info').style.display = 'block';
+                        }
+                    }
+                    break;
+                    
+                case 3:
+                    const i94Selected = document.querySelector('input[name="i94-status"]:checked');
+                    if (i94Selected) {
+                        userAnswers.i94Status = i94Selected.value;
+                        isValid = true;
+                    }
+                    break;
+                    
+                case 4:
+                    if (userAnswers.action === 'extend') {
+                        isValid = true;
+                    } else {
+                        const changeToSelected = document.querySelector('input[name="change-to"]:checked');
+                        if (changeToSelected) {
+                            userAnswers.changeTo = changeToSelected.value;
+                            
+                            if (userAnswers.changeTo === 'student') {
+                                const studySelected = document.querySelector('input[name="study-fulltime"]:checked');
+                                if (studySelected) {
+                                    userAnswers.studyFulltime = studySelected.value;
+                                    isValid = true;
+                                }
+                            } else {
+                                isValid = true;
+                            }
+                        }
+                    }
+                    
+                    if (isValid) {
+                        generateResult();
+                    }
+                    break;
+            }
+            
+            return isValid;
+        }
+        
+        // Mostrar paso específico
+        function showStep(stepNumber) {
+            steps.forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+            
+            // Actualizar botones de siguiente/previo
+            if (stepNumber === 1) {
+                document.getElementById('prev-step-2').style.display = 'none';
+            } else {
+                document.querySelectorAll('[id^="prev-step-"]').forEach(btn => {
+                    btn.style.display = 'block';
+                });
+            }
+            
+            if (stepNumber === 5) {
+                document.querySelectorAll('[id^="next-step-"]').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            } else {
+                document.querySelectorAll('[id^="next-step-"]').forEach(btn => {
+                    btn.style.display = 'block';
+                });
+            }
+        }
+        
+        // Generar resultado basado en las respuestas del usuario
+        function generateResult() {
+            const resultContent = document.getElementById('result-content');
+            let resultHTML = '';
+            
+            // Alerta si el I-94 está vencido
+            if (userAnswers.i94Status === 'expired') {
+                resultHTML += `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>¡Atención!</strong> Tu I-94 ha vencido. Esto puede complicar tu proceso. Te recomendamos encarecidamente consultar con un abogado de inmigración antes de proceder.
+                    </div>
+                `;
+            }
+            
+            if (userAnswers.action === 'extend') {
+                resultHTML += `
+                    <div class="result-card">
+                        <h3>Extensión de estatus</h3>
+                        <p>Por tus respuestas, lo que corresponde es solicitar una extensión de tu estatus actual mediante el Formulario I-539.</p>
+                        <p>Debes presentar esta solicitud antes de que venza tu estatus actual.</p>
+                        <a href="https://www.uscis.gov/es/i-539" target="_blank" class="result-link">
+                            Revisa la guía oficial de USCIS para extender tu estatus
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+            } else {
+                if (userAnswers.changeTo === 'student') {
+                    resultHTML += `
+                        <div class="result-card">
+                            <h3>Cambio a estatus de estudiante (F-1)</h3>
+                            <p>Por tus respuestas, lo que corresponde es solicitar un cambio de estatus a estudiante F-1 mediante el Formulario I-539.</p>
+                    `;
+                    
+                    if (userAnswers.studyFulltime === 'yes') {
+                        resultHTML += `
+                            <p>Para cambiar a estatus F-1, necesitarás:</p>
+                            <ul>
+                                <li>Ser admitido en una institución autorizada para emitir el Formulario I-20</li>
+                                <li>Demostrar fondos económicos suficientes</li>
+                                <li>Mantener tu estatus válido mientras se procesa el cambio</li>
+                            </ul>
+                            <p>Primero debes conseguir una admisión en una escuela/universidad que pueda emitirte el Formulario I-20.</p>
+                            <a href="https://www.ice.gov/sevis/school-search" target="_blank" class="result-link">
+                                Buscar escuelas certificadas SEVP
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        `;
+                    } else {
+                        resultHTML += `
+                            <p>Para cambiar a estatus F-1, necesitarás estudiar a tiempo completo. Si no planeas estudiar a tiempo completo, es posible que el estatus F-1 no sea el adecuado para ti.</p>
+                        `;
+                    }
+                    
+                    resultHTML += `
+                        <a href="https://www.uscis.gov/es/i-539" target="_blank" class="result-link">
+                            Revisa la guía oficial de USCIS para cambiar tu estatus
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    `;
+                } else {
+                    resultHTML += `
+                        <div class="result-card">
+                            <h3>Cambio a otro estatus no inmigrante</h3>
+                            <p>Por tus respuestas, lo que corresponde es solicitar un cambio de estatus no inmigrante mediante el Formulario I-539.</p>
+                            <p>No todos los cambios de estatus son posibles o requieren el Formulario I-539. Es importante que revises la guía oficial para confirmar si tu caso específico califica.</p>
+                            <a href="https://www.uscis.gov/es/i-539" target="_blank" class="result-link">
+                                Revisa la guía oficial de USCIS para cambiar tu estatus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    `;
+                }
+            }
+            
+            // Información general sobre el Formulario I-539
+            resultHTML += `
+                <div class="result-card">
+                    <h3>Información sobre el Formulario I-539</h3>
+                    <p>El Formulario I-539 se utiliza para:</p>
+                    <ul>
+                        <li>Extender la estadía en el mismo estatus de no inmigrante</li>
+                        <li>Cambiar a un diferente estatus de no inmigrante</li>
+                    </ul>
+                    <p>En la página oficial de USCIS encontrarás:</p>
+                    <ul>
+                        <li>Quiénes pueden usar este formulario</li>
+                        <li>Costos y formas de pago</li>
+                        <li>Tiempos de procesamiento</li>
+                        <li>Instrucciones paso a paso</li>
+                    </ul>
+                    <a href="https://www.uscis.gov/es/i-539" target="_blank" class="result-link">
+                        Visita la página oficial del Formulario I-539
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            `;
+            
+            // Aviso legal
+            resultHTML += `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Aviso legal:</strong> Esta aplicación no proporciona asesoría legal. La información es de carácter general. Para decisiones sobre tu caso específico, consulta la página oficial de USCIS y/o un abogado de inmigración.
+                </div>
+            `;
+            
+            resultContent.innerHTML = resultHTML;
+        }
+        
+        // Reiniciar el asistente
+        function resetWizard() {
+            userAnswers = {
+                currentStatus: '',
+                action: '',
+                i94Status: '',
+                changeTo: '',
+                studyFulltime: ''
+            };
+            
+            // Limpiar todas las selecciones
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            // Resetear botones
+            document.querySelectorAll('[id^="next-step-"]').forEach(btn => {
+                btn.disabled = true;
+                btn.style.display = 'block';
+            });
+            
+            document.querySelectorAll('[id^="prev-step-"]').forEach(btn => {
+                btn.style.display = 'none';
+            });
+        }
+        
+        // Habilitar botones de siguiente cuando se selecciona una opción
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const stepNumber = getCurrentStep();
+                const nextButton = document.getElementById(`next-step-${stepNumber}`);
+                
+                if (nextButton) {
+                    nextButton.disabled = false;
+                }
+                
+                // Mostrar información adicional si es necesario
+                if (radio.name === 'action') {
+                    if (radio.value === 'change') {
+                        document.getElementById('extend-info').style.display = 'none';
+                        document.getElementById('change-info').style.display = 'block';
+                    } else {
+                        document.getElementById('extend-info').style.display = 'block';
+                        document.getElementById('change-info').style.display = 'none';
+                    }
+                }
+                
+                if (radio.name === 'change-to' && radio.value === 'student') {
+                    document.getElementById('student-info').style.display = 'block';
+                    document.getElementById('next-step-4').disabled = true;
+                } else if (radio.name === 'change-to' && radio.value === 'other') {
+                    document.getElementById('student-info').style.display = 'none';
+                    document.getElementById('next-step-4').disabled = false;
+                }
+                
+                if (radio.name === 'study-fulltime') {
+                    document.getElementById('next-step-4').disabled = false;
+                }
+            });
+        });
+        
+        // Obtener el paso actual
+        function getCurrentStep() {
+            for (let i = 1; i <= 5; i++) {
+                if (document.getElementById(`step${i}`).classList.contains('active')) {
+                    return i;
+                }
+            }
+            return 1;
+        }
+    </script>
+</body>
+</html>
