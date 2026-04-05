@@ -1,26 +1,15 @@
 {
   "name": "amigro",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Tu guía para trámites de USCIS",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'Build complete'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chujitso/amigro.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/chujitso/amigro/issues"
-  },
-  "homepage": "https://github.com/chujitso/amigro#readme",
   "dependencies": {
     "@capacitor/android": "^8.3.0",
-    "@capacitor/cli": "^8.3.0",
     "@capacitor/core": "^8.3.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.3.0"
   }
 }

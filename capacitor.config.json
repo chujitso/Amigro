@@ -1,5 +1,8 @@
 {
-  "appId": "com.amigro.app",
-  "appName": "Amigro",
-  "webDir": "www"
+"appId": "com.amigro.app",
+"appName": "Amigro",
+"webDir": "www",
+"server": {
+"androidScheme": "https"
+}
 }
