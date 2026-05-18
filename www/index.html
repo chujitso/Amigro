@@ -6,6 +6,8 @@
     <title>Amigro - Tu guía para trámites de USCIS</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4361ee">
     <style>
         :root {
             --primary-color: #4361ee;
@@ -397,6 +399,11 @@
         </div>
     </header>
 
+    <!-- AVISO EXIGIDO POR GOOGLE PLAY -->
+    <div style="background-color: #ffffcc; padding: 15px; text-align: center; font-size: 14px; border-bottom: 3px solid #ffcc00; font-family: 'Montserrat', sans-serif;">
+        <strong>AVISO IMPORTANTE:</strong> Esta aplicación NO representa a ninguna entidad gubernamental y NO está afiliada al Servicio de Ciudadanía e Inmigración de los Estados Unidos (USCIS). Es una guía informativa independiente. Para la información oficial, visite directamente la fuente gubernamental: <a href="https://www.uscis.gov" target="_blank" style="color: #0044cc; font-weight: bold;">www.uscis.gov</a>
+    </div>
+
     <section class="hero">
         <div class="container">
             <h1>Guía para trámites de inmigración en Estados Unidos</h1>
@@ -404,7 +411,7 @@
             
             <div class="disclaimer">
                 <i class="fas fa-exclamation-triangle"></i>
-                <strong>Aviso legal:</strong> Esta aplicación no proporciona asesoría legal. La información es de carácter general. Para decisiones sobre tu caso específico, consulta la página oficial de USCIS y/o un abogado de inmigración.
+                <strong>Aviso legal:</strong> Esta aplicación NO representa a ninguna entidad gubernamental ni está afiliada a USCIS. No proporciona asesoría legal. La información es de carácter general. Para decisiones sobre tu caso específico, consulta la página oficial de USCIS y/o un abogado de inmigración.
             </div>
         </div>
     </section>
@@ -960,5 +967,14 @@
             return 1;
         }
     </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW Registrado'))
+        .catch(err => console.log('Error SW', err));
+    });
+  }
+</script>
 </body>
 </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Amigro Pro</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        h1 {
+            color: #4361ee;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #212529;
+            margin: 20px 0;
+        }
+        .features {
+            text-align: left;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        .features li {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        .pay-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Amigro Pro</h1>
+        <p>Tu guía definitiva para trámites de USCIS</p>
+        
+        <div class="price">$1.99 USD</div>
+        
+        <ul class="features">
+            <li>✅ Sin anuncios</li>
+            <li>✅ Acceso directo a formularios oficiales</li>
+            <li>✅ Instalable en tu celular (Android/iPhone)</li>
+            <li>✅ Funciona sin internet</li>
+        </ul>
+
+        <div class="pay-button">
+            <div id="paypal-button-container-P-0NY075093S3030625NIFYHCA"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AV4ZCpUFA95_FJr1JxiHC_CUrEyVkL-hyvDZlRgP-hm4LLziIT6-nJN1NFrZ31O5Y9CBryJ20v1PpmwE&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'horizontal',
+          label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-0NY075093S3030625NIFYHCA'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+  }).render('#paypal-button-container-P-0NY075093S3030625NIFYHCA'); // Renders the PayPal button
+</script>
+            
+        </div>
+    </div>
+</body>
+</html>
