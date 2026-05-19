@@ -3,95 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprar Amigro Pro</title>
+    <title>Amigro Pro - Tu Guía de USCIS</title>
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #212529;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
         }
-        .card {
+        .landing-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 450px;
             width: 100%;
-            padding: 40px 30px;
+            overflow: visible; /* Cambio importante para que el icono no se corte */
             text-align: center;
         }
+        .header-section {
+            background: #f8f9fa;
+            padding: 30px 20px 20px;
+            border-bottom: 4px solid #f72585;
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-top: -50px; /* Esto lo sube para que quede montado en la línea */
+            background: white;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: contain; /* Esto hace que el dibujo rosa quepa perfecto sin deformarse */
+            padding: 5px;
+        }
+        .badge {
+            background: #f72585;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
         h1 {
-            color: #4361ee;
-            margin-bottom: 10px;
-            font-size: 2rem;
+            color: #1e3c72;
+            margin: 0 0 10px;
+            font-size: 2.2rem;
+            line-height: 1.2;
         }
-        p {
-            color: #6c757d;
-            margin-bottom: 20px;
+        .subtitle {
+            color: #555;
             font-size: 1.1rem;
+            margin: 0;
         }
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #212529;
-            margin: 20px 0;
+        .content-section {
+            padding: 20px 25px 30px; /* Menos espacio arriba porque el icono ya no tapa */
         }
-        .features {
+        .pain-point {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
             text-align: left;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #856404;
+        }
+        .features-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
             margin-bottom: 30px;
-            padding-left: 20px;
         }
-        .features li {
-            margin-bottom: 10px;
-            color: #495057;
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #2a5298;
+            font-weight: 500;
         }
-        .pay-button {
-            margin-top: 20px;
+        .features-list li span {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        .price-tag {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .price-tag strong {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        .pay-section {
+            background: #ffffff;
+            padding: 20px 25px 30px;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Amigro Pro</h1>
-        <p>Tu guía definitiva para trámites de USCIS</p>
-        
-        <div class="price">$1.99 USD</div>
-        
-        <ul class="features">
-            <li>✅ Sin anuncios</li>
-            <li>✅ Acceso directo a formularios oficiales</li>
-            <li>✅ Instalable en tu celular (Android/iPhone)</li>
-            <li>✅ Funciona sin internet</li>
-        </ul>
+    <div class="landing-card">
+        <div class="header-section">
+            <div class="badge">Versión Premium</div>
+            <h1>Amigro Pro</h1>
+            <p class="subtitle">Evita errores que te cuestan miles de dólares en consultas de inmigración.</p>
+        </div>
 
-        <div class="pay-button">
-            <div id="paypal-button-container-P-0NY075093S3030625NIFYHCA"></div>
+        <!-- Icono de la app montado justo en la división -->
+        <img src="icono.png" alt="Amigro Icon" class="app-icon">
+
+        <div class="content-section">
+            <div class="pain-point">
+                ⚠️ Navegar la página de USCIS es confuso y un error en tu trámite puede retrasar tu estatus por meses o costarte fortunas en servicios NO jurídicos en manos de NO abogados..
+            </div>
+
+            <ul class="features-list">
+                <li><span>🎯</span> Te lleva directo a los formularios oficiales (.gov)</li>
+                <li><span>🚫</span> 100% Sin anuncios ni interrupciones</li>
+                <li><span>📱</span> Instálala en tu celular (Android o iPhone)</li>
+                <li><span>💰</span> Ahorra cientos de dólares en asesorías innecesarias</li>
+            </ul>
+
+            <div class="price-tag">
+                Accede por solo <strong>$1.99 USD</strong> • Pago único
+            </div>
+        </div>
+
+        <div class="pay-section">
+           <div id="paypal-button-container-P-3EP68407KJ1527451NIF27KA"></div>
 <script src="https://www.paypal.com/sdk/js?client-id=AV4ZCpUFA95_FJr1JxiHC_CUrEyVkL-hyvDZlRgP-hm4LLziIT6-nJN1NFrZ31O5Y9CBryJ20v1PpmwE&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 <script>
   paypal.Buttons({
       style: {
           shape: 'pill',
           color: 'blue',
-          layout: 'horizontal',
-          label: 'subscribe'
+          layout: 'vertical',
+          label: 'paypal'
       },
       createSubscription: function(data, actions) {
         return actions.subscription.create({
           /* Creates the subscription */
-          plan_id: 'P-0NY075093S3030625NIFYHCA'
+          plan_id: 'P-3EP68407KJ1527451NIF27KA'
         });
       },
       onApprove: function(data, actions) {
         alert(data.subscriptionID); // You can add optional success message for the subscriber here
       }
-  }).render('#paypal-button-container-P-0NY075093S3030625NIFYHCA'); // Renders the PayPal button
+  }).render('#paypal-button-container-P-3EP68407KJ1527451NIF27KA'); // Renders the PayPal button
 </script>
             
+
+
         </div>
     </div>
 </body>
