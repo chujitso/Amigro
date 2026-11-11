@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amigro - Tu guía para trámites de USCIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -307,6 +307,134 @@
             background-color: rgba(67, 97, 238, 0.1);
             border-left: 4px solid var(--primary-color);
         }
+
+        /* ====== NUEVO: SECCIÓN NACIONALIDADES ====== */
+        .nationality-section {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 40px auto;
+        }
+
+        .nationality-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .nationality-section h2 i {
+            color: var(--success-color);
+            margin-right: 10px;
+        }
+
+        .nationality-section > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .accordion {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.1);
+        }
+
+        .accordion-btn {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-btn:hover {
+            background: #f8f9fa;
+        }
+
+        .accordion-btn span {
+            font-size: 1.1rem;
+        }
+
+        .accordion-btn i {
+            transition: transform 0.3s ease;
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+
+        .accordion-btn.open i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 20px;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            background: #fafbfc;
+        }
+
+        .accordion-content.open {
+            max-height: 400px;
+            padding: 18px 20px 22px;
+        }
+
+        .accordion-content strong {
+            color: var(--primary-color);
+        }
+
+        .accordion-content a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary-color);
+        }
+
+        .accordion-content a:hover {
+            color: var(--secondary-color);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .status-activo {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelado {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        /* ====== FIN SECCIÓN NACIONALIDADES ====== */
 
         .footer {
             background-color: var(--dark-color);
@@ -612,6 +740,536 @@
                 </div>
             </div>
         </div>
+
+        <!-- ====== NUEVA SECCIÓN: GUÍA POR NACIONALIDAD ====== -->
+        <div class="nationality-section">
+            <h2><i class="fas fa-flag"></i> Guía por nacionalidad</h2>
+            <p>Toca tu país para ver los programas migratorios disponibles según USCIS (información verificada oficialmente a 2026):</p>
+
+            <!-- Colombia -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇨🇴 Colombia</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>Programa FRP (Reunificación Familiar)</strong> <span class="status-badge status-activo">ACTIVO</span><br><br>
+                    Permite a familiares de ciudadanos/residentes entrar a EE.UU. por la vía del parole humanitario. Es uno de los 7 países beneficiados con este programa reinstaurado por orden judicial en enero de 2026.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/FRP" target="_blank">Ver proceso FRP para colombianos →</a>
+                </div>
+            </div>
+
+            <!-- Cuba -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇨🇺 Cuba</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>1. Ley de Ajuste Cubano</strong> <span class="status-badge status-activo">ÚNICA EN EL MUNDO</span><br>
+                    Todo cubano que llega a EE.UU. puede aplicar a la Green Card tras vivir 1 año y 1 día en el país. Es el programa migratorio más ventajoso que existe.
+                    <br><br>
+                    <a href="https://www.uscis.gov/green-card/green-card-eligibility/green-card-for-a-cuban-native-or-citizen" target="_blank">Ver Green Card para cubanos en USCIS →</a>
+                    <br><br>
+                    <strong>2. Programa CFRP (Reunificación Familiar Cubana)</strong> <span class="status-badge status-activo">ACTIVO</span><br>
+                    Programa exclusivo para familiares de ciudadanos/residentes cubanos.
+                    <br><br>
+                    <a href="https://www.uscis.gov/humanitarian/humanitarian-parole/the-cuban-family-reunification-parole-program" target="_blank">Ver programa CFRP en USCIS →</a>
+                    <br><br>
+                    <strong>3. Programa FRP general</strong> <span class="status-badge status-activo">ACTIVO</span><br>
+                    Cuba también participa en el programa FRP general de 7 países.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/FRP" target="_blank">Ver proceso FRP →</a>
+                    <br><br>
+                    <strong>4. Registro de Extranjeros (paso previo obligatorio)</strong><br>
+                    Todos los cubanos deben registrarse en USCIS al llegar.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/registro-extranjeros" target="_blank">Ver Registro de Extranjeros →</a>
+                </div>
+            </div>
+
+            <!-- Ecuador -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇪🇨 Ecuador</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>Programa FRP (Reunificación Familiar)</strong> <span class="status-badge status-activo">ACTIVO</span><br><br>
+                    Permite a familiares de ciudadanos/residentes entrar a EE.UU. por la vía del parole humanitario. Ecuador es uno de los 7 países beneficiados con este programa.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/FRP" target="_blank">Ver proceso FRP para ecuatorianos →</a>
+                </div>
+            </div>
+
+            <!-- El Salvador -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇸🇻 El Salvador</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>1. TPS (Estatus de Protección Temporal)</strong> <span class="status-badge status-activo">ACTIVO</span><br>
+                    Permite vivir y trabajar legalmente en EE.UU. El Salvador es uno de los pocos países que mantiene el TPS vigente en 2026. Actualmente extendido hasta el 9 de septiembre de 2026 (con extensiones automáticas de EAD).
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/programas-humanitarios/estatus-de-proteccion-temporal/pais-designado-al-estatus-de-proteccion-temporal-el-salvador" target="_blank">Ver TPS específico para El Salvador en USCIS →</a>
+                    <br><br>
+                    <strong>2. Programa FRP</strong> <span class="status-badge status-activo">ACTIVO</span><br>
+                    Para reunificación familiar.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/FRP" target="_blank">Ver proceso FRP →</a>
+                </div>
+            </div>
+
+            <!-- Haití -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇭🇹 Haití</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>1. TPS</strong> <span class="status-badge status-cancelado">CANCELADO (jul 2026)</span><br>
+                    Los beneficiarios existentes deben explorar otras vías (asilo, ajuste de estatus, visa U).
+                    <br><br>
+                    <strong>2. Programa FRP</strong> <span class="status-badge status-activo">ACTIVO</span><br>
+                    Reinstaurado por orden judicial en enero 2026. Para reunificación familiar.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/FRP" target="_blank">Ver proceso FRP para haitianos →</a>
+                </div>
+            </div>
+
+            <!-- Guatemala y Honduras -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇬🇹 Guatemala y 🇭🇳 Honduras</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>Programa FRP (Reunificación Familiar)</strong> <span class="status-badge status-activo">ACTIVO para ambos países</span><br><br>
+                    <strong>Nota sobre TPS:</strong> Honduras finalizó su TPS en septiembre 2025. Guatemala nunca tuvo TPS designado.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/FRP" target="_blank">Ver proceso FRP →</a>
+                </div>
+            </div>
+
+            <!-- Venezuela -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇻🇪 Venezuela</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>1. TPS Venezuela</strong> <span class="status-badge status-cancelado">CANCELADO (oct 2025) — POSIBLE RESTABLECIMIENTO 20 NOV 2026</span><br>
+                    Una corte federal de apelaciones ordenó el restablecimiento del TPS para Venezuela, pero el gobierno presentó una apelación. La suspensión administrativa de 14 días pone la decisión en pausa <strong>hasta el 20 de noviembre de 2026</strong>. Después de esa fecha, verifica el estado en USCIS.
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/programas-humanitarios/estatus-de-proteccion-temporal" target="_blank">Verificar estado actual del TPS Venezuela en USCIS →</a>
+                    <br><br>
+                    <strong>2. Programa CHNV (Parole)</strong> <span class="status-badge status-cancelado">CANCELADO</span><br>
+                    No se procesan nuevas solicitudes.
+                    <br><br>
+                    <strong>Vías recomendadas para venezolanos:</strong>
+                    <ul style="margin: 10px 0 10px 20px;">
+                        <li>Asilo político (I-589) — la vía más común</li>
+                        <li>Petición familiar (I-130) si tienes familiar ciudadano/residente</li>
+                        <li>Visa U si eres víctima de crimen en EE.UU.</li>
+                    </ul>
+                    <a href="https://www.uscis.gov/es/i-589" target="_blank">Ver Asilo (Formulario I-589) en USCIS →</a>
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/asilo" target="_blank">Ver página principal de Asilo en USCIS →</a>
+                </div>
+            </div>
+
+            <!-- Nicaragua -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇳🇮 Nicaragua</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>1. TPS Nicaragua</strong> <span class="status-badge status-cancelado">FINALIZÓ (sep 2025)</span><br>
+                    <a href="https://www.uscis.gov/es/programas-humanitarios/estatus-de-proteccion-temporal" target="_blank">Ver estado actual TPS en USCIS →</a>
+                    <br><br>
+                    <strong>2. Programa CHNV (Parole)</strong> <span class="status-badge status-cancelado">CANCELADO</span><br>
+                    No se procesan nuevas solicitudes.
+                    <br><br>
+                    <strong>Vías recomendadas para nicaragüenses:</strong>
+                    <ul style="margin: 10px 0 10px 20px;">
+                        <li>Asilo político (I-589) — especialmente por persecución política del régimen de Ortega</li>
+                        <li>Petición familiar (I-130) si tienes familiar ciudadano/residente</li>
+                    </ul>
+                    <a href="https://www.uscis.gov/es/i-589" target="_blank">Ver Asilo (Formulario I-589) en USCIS →</a>
+                    <br><br>
+                    <a href="https://www.uscis.gov/es/asilo" target="_blank">Ver página principal de Asilo en USCIS →</a>
+                </div>
+            </div>
+
+            <!-- República Dominicana y Perú -->
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>🇩🇴 República Dominicana y 🇵🇪 Perú</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <strong>Sin programas especiales propios.</strong> Deben usar las vías generales de inmigración:
+                    <br><br>
+                    <ul style="margin: 10px 0 10px 20px;">
+                        <li><strong>Petición familiar (I-130)</strong> si tienen familiar ciudadano/residente</li>
+                        <li><strong>Asilo (I-589)</strong> si huyeron de persecución</li>
+                        <li><strong>Visa de trabajo (I-129)</strong> si tienen oferta laboral</li>
+                        <li><strong>Visa U</strong> si son víctimas de crímenes</li>
+                    </ul>
+                    <a href="https://www.uscis.gov/es/i-130" target="_blank">Ver petición familiar (I-130) →</a>
+                </div>
+            </div>
+
+            <!-- Aviso dentro de la sección -->
+            <div class="alert alert-info" style="margin-top: 25px;">
+                <i class="fas fa-info-circle"></i>
+                <strong>Importante:</strong> La información sobre programas migratorios cambia frecuentemente. Siempre verifica el estado actual en la página oficial de <a href="https://www.uscis.gov/es" target="_blank">USCIS</a> antes de presentar cualquier solicitud.
+            </div>
+        </div>
+        <!-- ====== FIN SECCIÓN NACIONALIDAD ====== -->
+
+        <!-- ====== NUEVA SECCIÓN: DICCIONARIO MIGRATORIO ====== -->
+        <div class="nationality-section" style="border-left: 5px solid var(--accent-color);">
+            <h2><i class="fas fa-book"></i> Diccionario Migratorio</h2>
+            <p>Toca cada término para ver su definición clara y sencilla</p>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-hashtag" style="color: var(--accent-color); margin-right: 8px;"></i> Número de Alien (A-Number)</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Es un número único de 7, 8 o 9 dígitos que USCIS asigna a cada extranjero. Lo encuentras en tu Green Card, permiso de trabajo o documentos de USCIS. Empieza con la letra "A" (ejemplo: A123456789).
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-building" style="color: var(--accent-color); margin-right: 8px;"></i> USCIS</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    United States Citizenship and Immigration Services (Servicio de Ciudadanía e Inmigración de EE.UU.). Es la agencia del gobierno que procesa todas las peticiones de inmigración, visas, asilo y ciudadanía.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-id-card" style="color: var(--accent-color); margin-right: 8px;"></i> Green Card</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    También conocida como Tarjeta de Residente Permanente. Te da el derecho a vivir y trabajar permanentemente en EE.UU. Se obtiene por familia, empleo, asilo o lotería de visas.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-shield-alt" style="color: var(--accent-color); margin-right: 8px;"></i> Visa U</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Visa especial para víctimas de crímenes en EE.UU. (violencia doméstica, abuso sexual, secuestro, etc.) que colaboran con las autoridades. Permite obtener permiso de trabajo y eventualmente la Green Card.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-shield-alt" style="color: var(--accent-color); margin-right: 8px;"></i> Visa T</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Visa para víctimas de trata de personas (trata laboral o sexual). Permite permanecer legalmente en EE.UU., obtener permiso de trabajo y eventualmente aplicar a la residencia.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-clock" style="color: var(--accent-color); margin-right: 8px;"></i> TPS (Estatus de Protección Temporal)</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Permite a personas de países con conflictos armados, desastres naturales u otras condiciones extraordinarias vivir y trabajar legalmente en EE.UU. de forma temporal. Actualmente vigente para: El Salvador, Sudán, Ucrania y Líbano. <strong>Para Venezuela, Haití, Honduras y Nicaragua el TPS fue cancelado</strong> (verifica siempre el estado actual en USCIS).
+                    <br><br>
+                    <em><i class="fas fa-info-circle"></i> <strong>Actualización venezolanos (nov 2026):</strong> Una corte federal anunció un posible restablecimiento del TPS para Venezuela. El gobierno presentó una apelación y la suspensión está en espera hasta el <strong>20 de noviembre de 2026</strong>. Verifica el estado en <a href="https://www.uscis.gov/es/programas-humanitarios/estatus-de-proteccion-temporal" target="_blank">USCIS</a> después de esa fecha.</em>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-file-alt" style="color: var(--accent-color); margin-right: 8px;"></i> I-94</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Documento que registra tu entrada y salida de EE.UU. Como turista o no inmigrante, tu I-94 determina hasta cuándo puedes permanecer legalmente. Consúltalo en <a href="https://i94.cbp.dhs.gov/" target="_blank">i94.cbp.dhs.gov</a>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-briefcase" style="color: var(--accent-color); margin-right: 8px;"></i> EAD (Permiso de Trabajo)</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Employment Authorization Document. Es la tarjeta física que te autoriza a trabajar en EE.UU. mientras se procesa tu caso migratorio. Se solicita con el formulario I-765.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-child" style="color: var(--accent-color); margin-right: 8px;"></i> DACA</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Acción Diferida para los Llegados en la Infancia. Programa que protege de la deportación y otorga permiso de trabajo a personas que llegaron a EE.UU. siendo niños.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-gavel" style="color: var(--accent-color); margin-right: 8px;"></i> Asilo Político</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Protección otorgada a personas que huyeron de su país por persecución por raza, religión, nacionalidad, opinión política o pertenencia a un grupo social. Se solicita con el formulario I-589.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-plane" style="color: var(--accent-color); margin-right: 8px;"></i> Parole Humanitario</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Permiso temporal para entrar a EE.UU. por razones humanitarias urgentes. Es lo que usan los programas CHNV (Cuba, Haití, Nicaragua, Venezuela) y FRP (Reunificación Familiar).
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-home" style="color: var(--accent-color); margin-right: 8px;"></i> Ajuste de Estatus</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Proceso para cambiar de un estatus temporal (turista, estudiante) a residente permanente (Green Card) sin tener que salir de EE.UU. Se hace con el formulario I-485.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-users" style="color: var(--accent-color); margin-right: 8px;"></i> Petición Familiar (I-130)</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Formulario que un ciudadano o residente estadounidense presenta para pedir a un familiar extranjero (esposo/a, hijos, padres, hermanos). Es el primer paso para la Green Card por familia.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-search" style="color: var(--accent-color); margin-right: 8px;"></i> ICE (Inmigración y Aduanas)</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    Immigration and Customs Enforcement. Agencia encargada de hacer cumplir las leyes de inmigración dentro de EE.UU. Son los que detienen y procesan a personas sin estatus legal. Para localizar un detenido: <a href="https://locator.ice.gov/odls/#/index" target="_blank">locator.ice.gov</a>
+                </div>
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 25px;">
+                <i class="fas fa-info-circle"></i>
+                <strong>¿No encuentras un término?</strong> Visita el <a href="https://www.uscis.gov/es/glosario" target="_blank">glosario oficial de USCIS</a> para más definiciones.
+            </div>
+        </div>
+        <!-- ====== FIN DICCIONARIO MIGRATORIO ====== -->
+
+        <!-- ====== NUEVA SECCIÓN: LOCALIZADORES OFICIALES ICE/EOIR ====== -->
+        <div class="nationality-section" style="border-left: 5px solid var(--danger-color);">
+            <h2><i class="fas fa-exclamation-triangle" style="color: var(--danger-color);"></i> Localizadores Oficiales</h2>
+            <p>Herramientas oficiales del gobierno de EE.UU. para casos urgentes</p>
+
+            <!-- ICE Detainee Locator -->
+            <div style="background: linear-gradient(135deg, #fb5607, #ff006e); color: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; text-align: center;">
+                <h3 style="color: white; margin-bottom: 12px;"><i class="fas fa-search-location"></i> Localizador de Detenidos por ICE</h3>
+                <p style="margin-bottom: 18px; font-size: 0.95rem;">¿Un familiar o amigo está detenido por Inmigración? Encuentra su ubicación en la base de datos oficial de ICE.</p>
+                <p style="font-size: 0.85rem; margin-bottom: 15px; opacity: 0.9;">
+                    <strong>Necesitarás:</strong> Nombre completo, fecha de nacimiento y país de origen<br>
+                    <em>O</em> su Número de Alien (A-Number) de 8 o 9 dígitos
+                </p>
+                <a href="https://locator.ice.gov" target="_blank" style="background: white; color: #fb5607; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-block; font-size: 1.05rem;">
+                    <i class="fas fa-external-link-alt"></i> ABRIR LOCALIZADOR ICE
+                </a>
+                <p style="font-size: 0.75rem; margin-top: 15px; opacity: 0.85;">
+                    Fuente oficial: U.S. Immigration and Customs Enforcement (ICE)<br>
+                    <strong>Nota:</strong> Personas con orden final de deportación pueden no aparecer en el sistema.
+                </p>
+            </div>
+
+            <!-- EOIR Case Status -->
+            <div style="background: #e3f2fd; border: 2px solid #1976d2; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+                <h3 style="color: #1976d2; margin-bottom: 12px;"><i class="fas fa-gavel"></i> Estado de Caso en Corte de Inmigración (EOIR)</h3>
+                <p style="margin-bottom: 15px; font-size: 0.95rem; color: #555;">
+                    Si tienes un caso ante la corte de inmigración, consulta el estado de tu caso, tu próxima audiencia y la información de tu corte directamente en el sistema oficial del Departamento de Justicia.
+                </p>
+
+                <p style="font-size: 0.9rem; margin-bottom: 12px; color: #444; font-weight: 600;">
+                    <i class="fas fa-info-circle" style="color: #1976d2;"></i> ¿Qué puedes hacer en EOIR con tus datos de USCIS?
+                </p>
+                <ul style="font-size: 0.88rem; margin: 0 0 15px 20px; color: #555; line-height: 1.7;">
+                    <li><strong>Verificar tu próxima audiencia:</strong> Fecha, hora y dirección de tu corte de inmigración</li>
+                    <li><strong>Consultar el estado de tu caso:</strong> Si está abierto, cerrado, en apelación o suspendido</li>
+                    <li><strong>Ver tu "Asylum Clock" (reloj de asilo):</strong> Días acumulados para solicitar permiso de trabajo</li>
+                    <li><strong>Conocer el nombre de tu juez:</strong> Útil para preparar tu caso con un abogado</li>
+                    <li><strong>Verificar decisiones anteriores:</strong> Si hubo apelaciones (BIA) o mociones</li>
+                    <li><strong>Documentos que necesitarás llevar a tu abogado:</strong> La información que obtienes aquí es esencial para tu defensa</li>
+                </ul>
+
+                <p style="font-size: 0.85rem; margin-bottom: 15px; color: #666;">
+                    <strong>Necesitarás:</strong> Tu Número de Alien (A-Number) de 9 dígitos (el que USCIS te dio en tu carta I-797 o NTA) y tu nacionalidad
+                </p>
+                <a href="https://acis.eoir.justice.gov" target="_blank" style="background: #1976d2; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-block;">
+                    <i class="fas fa-external-link-alt"></i> CONSULTAR MI CASO EN EOIR
+                </a>
+                <p style="font-size: 0.75rem; margin-top: 12px; color: #777;">
+                    Fuente oficial: Executive Office for Immigration Review (EOIR) — Departamento de Justicia de EE.UU.<br>
+                    <em>Las decisiones oficiales son las que la corte te envía por correo. Este sistema es solo informativo.</em>
+                </p>
+            </div>
+
+            <!-- Aviso importante -->
+            <div class="alert alert-warning" style="margin-top: 20px;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Importante:</strong> Si tu familiar califica para salir bajo fianza, o si tiene una orden de deportación, <strong>debes contactar inmediatamente a un abogado de inmigración o a una organización sin fines de lucro</strong>. Amigro Pro no puede representarte legalmente ante la corte.
+            </div>
+
+            <!-- Organizaciones de ayuda legal gratuita -->
+            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-top: 15px;">
+                <h4 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-hands-helping"></i> Ayuda Legal Gratuita</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 12px; color: #555;">
+                    Organizaciones reconocidas que ofrecen asistencia legal gratuita o de bajo costo para inmigrantes detenidos:
+                </p>
+                <ul style="font-size: 0.9rem; margin-left: 20px; color: #555;">
+                    <li><a href="https://www.acaciaimmigration.org" target="_blank" style="color: var(--primary-color);">Acacia Center for Justice</a> — Representación en casos de detención</li>
+                    <li><a href="https://www.immigrationadvocates.org" target="_blank" style="color: var(--primary-color);">Immigration Advocates Network</a> — Directorio nacional de ayuda legal</li>
+                    <li><a href="https://www.uscis.gov/es/evf" target="_blank" style="color: var(--primary-color);">USCIS — Encuentra representación legal</a> — Lista oficial del gobierno</li>
+                </ul>
+            </div>
+        </div>
+        <!-- ====== FIN SECCIÓN LOCALIZADORES OFICIALES ====== -->
+
+        <!-- ====== NUEVA SECCIÓN: VISAS PARA LATINOS FUERA DE EE.UU. ====== -->
+        <div class="nationality-section" style="border-left: 5px solid var(--success-color);">
+            <h2><i class="fas fa-plane-departure" style="color: var(--success-color);"></i> ¿Estás fuera de EE.UU. y quieres permanecer más tiempo?</h2>
+            <p>Opciones oficiales de USCIS para latinos que desean visitar, trabajar o estudiar en Estados Unidos</p>
+
+            <!-- Visa de Turismo -->
+            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
+                <h3 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-camera"></i> Visa de Turismo / Negocios (B1/B2)</h3>
+                <p style="font-size: 0.92rem; color: #555; margin-bottom: 10px;">
+                    Para visitar EE.UU. por turismo, visitas familiares, tratamiento médico o negocios temporales. Válida hasta por 6 meses (con posibilidad de extensión).
+                </p>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">
+                    <strong>Proceso:</strong> Solicítala en la embajada/consulado de EE.UU. de tu país. Completa el formulario DS-160.
+                </p>
+                <a href="https://travel.state.gov/content/travel/es/us-visas/tourism-visit/visitor.html" target="_blank" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--primary-color);">Ver Visa B1/B2 en State.gov →</a>
+            </div>
+
+            <!-- Visa de Estudiante -->
+            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
+                <h3 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-graduation-cap"></i> Visa de Estudiante (F-1 / M-1)</h3>
+                <p style="font-size: 0.92rem; color: #555; margin-bottom: 10px;">
+                    Para estudiar en EE.UU. en instituciones certificadas (universidades, colleges, escuelas técnicas). La visa F-1 es para programas académicos, la M-1 para vocacionales.
+                </p>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">
+                    <strong>Requisitos:</strong> Ser aceptado por una escuela SEVP-certificada, demostrar fondos económicos y formulario I-20.
+                </p>
+                <a href="https://travel.state.gov/content/travel/es/us-visas/study-exchange/student.html" target="_blank" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--primary-color);">Ver Visa de Estudiante en State.gov →</a>
+            </div>
+
+            <!-- Visa de Trabajo Temporal -->
+            <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--primary-color);">
+                <h3 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-briefcase"></i> Visa de Trabajo Temporal (H, L, O, P, Q)</h3>
+                <p style="font-size: 0.92rem; color: #555; margin-bottom: 10px;">
+                    Para trabajar en EE.UU. temporalmente. El empleador en EE.UU. debe presentar una petición (Formulario I-129) por ti antes de que apliques a la visa.
+                </p>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">
+                    <strong>Categorías comunes:</strong> H-1B (profesionales), H-2A (agrícola), H-2B (no agrícola temporal), L (transferencias corporativos).
+                </p>
+                <a href="https://travel.state.gov/content/travel/es/us-visas/employment/temporary-worker.html" target="_blank" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--primary-color);">Ver Visas de Trabajo Temporal →</a>
+            </div>
+
+            <!-- Extensión de Estadía -->
+            <div style="background: #fff3cd; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--warning-color);">
+                <h3 style="color: #856404; margin-bottom: 10px;"><i class="fas fa-clock"></i> ¿Ya estás en EE.UU. y quieres extender tu estadía? (Formulario I-539)</h3>
+                <p style="font-size: 0.92rem; color: #555; margin-bottom: 10px;">
+                    Si ya entraste con visa de turismo, estudiante o dependiente y quieres quedarte más tiempo legalmente, puedes solicitar una extensión de tu estatus de no inmigrante.
+                </p>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">
+                    <strong>Importante:</strong> Debes presentar la solicitud ANTES de que venza tu I-94 actual. No trabajes mientras se procesa.
+                </p>
+                <a href="https://www.uscis.gov/es/i-539" target="_blank" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--primary-color);">Ver Formulario I-539 en USCIS →</a>
+            </div>
+
+            <!-- Cambio de Estatus -->
+            <div style="background: #e8f5e9; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--success-color);">
+                <h3 style="color: #2e7d32; margin-bottom: 10px;"><i class="fas fa-exchange-alt"></i> Cambio de Estatus dentro de EE.UU.</h3>
+                <p style="font-size: 0.92rem; color: #555; margin-bottom: 10px;">
+                    Si ya estás en EE.UU. legalmente (turista, estudiante, dependiente) y quieres cambiar a otro estatus (por ejemplo, de turista a estudiante), puedes hacerlo sin salir del país mediante el Formulario I-539.
+                </p>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">
+                    <strong>Ventaja:</strong> Evita viajar de regreso a tu país para tramitar la visa.
+                </p>
+                <a href="https://www.uscis.gov/es/residencia-permanente-tarjeta-verde/procesos-y-procedimientos-para-la-residencia-permanente/ajuste-de-estatus" target="_blank" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--primary-color);">Ver Ajuste de Estatus en USCIS →</a>
+            </div>
+
+            <!-- Aviso importante -->
+            <div class="alert alert-info" style="margin-top: 20px;">
+                <i class="fas fa-info-circle"></i>
+                <strong>Consejo clave:</strong> Si tu visa dice "B1/B2" o cualquier otra visa de no inmigrante, NO intentes quedarte permanentemente en tu primera visita. USCIS puede detectar "intención preconcebida" (fraude migratorio) y negarte futuras visas. Consulta con un abogado antes de cambiar planes.
+            </div>
+        </div>
+        <!-- ====== FIN SECCIÓN VISAS FUERA DE EE.UU. ====== -->
+
+        <!-- ====== DISCLAIMER FINAL OBLIGATORIO ====== -->
+        <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 12px; padding: 25px; margin: 30px auto; max-width: 1100px;">
+            <h3 style="color: #856404; margin-bottom: 15px; text-align: center;"><i class="fas fa-exclamation-triangle"></i> AVISO LEGAL IMPORTANTE</h3>
+            <p style="color: #856404; font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px;">
+                <strong>Amigro Pro es una herramienta informativa independiente.</strong> NO representa, NO está afiliada, ni está respaldada por ninguna entidad gubernamental, incluyendo:
+            </p>
+            <ul style="color: #856404; font-size: 0.9rem; margin: 10px 0 15px 25px; line-height: 1.6;">
+                <li>Servicio de Ciudadanía e Inmigración de EE.UU. (USCIS)</li>
+                <li>Inmigración y Aduanas (ICE) o Aduanas y Protección Fronteriza (CBP)</li>
+                <li>Executive Office for Immigration Review (EOIR) / Departamento de Justicia</li>
+                <li>Departamento de Seguridad Nacional (DHS)</li>
+            </ul>
+            <p style="color: #856404; font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px;">
+                <strong>Lo que Amigro Pro NO hace:</strong>
+            </p>
+            <ul style="color: #856404; font-size: 0.9rem; margin: 10px 0 15px 25px; line-height: 1.6;">
+                <li>NO proporciona asesoría legal ni reemplaza a un abogado de inmigración</li>
+                <li>NO presenta solicitudes por ti ni garantiza aprobación de ningún trámite</li>
+                <li>NO garantiza la exactitud de la información sobre programas migratorios, ya que las políticas del gobierno cambian frecuentemente</li>
+                <li>NO representa a personas en cortes de inmigración ni gestiona casos de deportación</li>
+            </ul>
+            <p style="color: #856404; font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px;">
+                <strong>Lo que SÍ hace Amigro Pro:</strong>
+            </p>
+            <ul style="color: #856404; font-size: 0.9rem; margin: 10px 0 15px 25px; line-height: 1.6;">
+                <li>Te guía para identificar qué formulario de USCIS corresponde a tu situación</li>
+                <li>Te redirige a las fuentes oficiales del gobierno (.gov) para que presentes tu solicitud directamente</li>
+                <li>Te explica términos migratorios en lenguaje sencillo</li>
+                <li>Te conecta con organizaciones de ayuda legal gratuita cuando corresponde</li>
+            </ul>
+            <p style="color: #856404; font-size: 0.95rem; line-height: 1.7; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(133, 100, 4, 0.3);">
+                <strong>Recomendación final:</strong> Para cualquier decisión sobre tu caso específico, apelaciones, deportación, asilo o representation legal, <strong>debes consultar con un abogado de inmigración certificado</strong>. Las leyes migratorias de EE.UU. son complejas y cambian constantemente.
+            </p>
+            <p style="color: #856404; font-size: 0.85rem; margin-top: 15px; text-align: center;">
+                Fuentes oficiales para verificar siempre: <a href="https://www.uscis.gov/es" target="_blank" style="color: #0044cc;">USCIS</a> | <a href="https://www.ice.gov" target="_blank" style="color: #0044cc;">ICE</a> | <a href="https://www.justice.gov/eoir" target="_blank" style="color: #0044cc;">EOIR</a>
+            </p>
+        </div>
+        <!-- ====== FIN DISCLAIMER FINAL ====== -->
     </main>
 
     <footer class="footer">
@@ -627,7 +1285,9 @@
                     <ul>
                         <li><a href="https://www.uscis.gov/es/i-539" target="_blank">Formulario I-539 en USCIS</a></li>
                         <li><a href="https://i94.cbp.dhs.gov/" target="_blank">Consulta tu I-94</a></li>
-                        <li><a href="https://www.ice.gov/sevis#:~:text=Antecedentes:%20SEVP%20y%20SEVIS%20El%20Programa%20de,intercambio%20leg%C3%ADtimos%20puedan%20ingresar%20a%20Estados%20Unidos." target="_blank">Escuelas certificadas SEVP</a></li>
+                        <li><a href="https://www.ice.gov/sevis#:~:text=Antecedentes:%20SEVP%20y%20SEVIS%20El%20Programa%20de,intercambio%20leg%C3%ADtimos%20pueden%20ingresar%20a%20Estados%20Unidos." target="_blank">Escuelas certificadas SEVP</a></li>
+                        <li><a href="https://www.uscis.gov/es/FRP" target="_blank">Programa FRP (Reunificación Familiar)</a></li>
+                        <li><a href="https://www.uscis.gov/es/programas-humanitarios/estatus-de-proteccion-temporal" target="_blank">Estatus de Protección Temporal (TPS)</a></li>
                     </ul>
                 </div>
                 
@@ -638,7 +1298,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Amigro. Todos los derechos reservados.</p>
+                <p>&copy; 2026 Amigro. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -822,10 +1482,10 @@
                                 <li>Mantener tu estatus válido mientras se procesa el cambio</li>
                             </ul>
                             <p>Primero debes conseguir una admisión en una escuela/universidad que pueda emitirte el Formulario I-20.</p>
-                            <a href="https://www.ice.gov/sevis#:~:text=Antecedentes:%20SEVP%20y%20SEVIS%20El%20Programa%20de,intercambio%20leg%C3%ADtimos%20puedan%20ingresar%20a%20Estados%20Unidos." target="_blank" class="result-link">
->>     Buscar escuelas certificadas SEVP
->>     <i class="fas fa-arrow-right"></i>
->> </a>
+                            <a href="https://www.ice.gov/sevis#:~:text=Antecedentes:%20SEVP%20y%20SEVIS%20El%20Programa%20de,intercambio%20leg%C3%ADtimos%20pueden%20ingresar%20a%20Estados%20Unidos." target="_blank" class="result-link">
+                                Buscar escuelas certificadas SEVP
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         `;
                     } else {
                         resultHTML += `
@@ -959,6 +1619,28 @@
             }
             return 1;
         }
+
+        // ====== NUEVA FUNCIÓN: ACORDEONES DE NACIONALIDAD ======
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const isOpen = content.classList.contains('open');
+            
+            // Cerrar todos los acordeones
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+            document.querySelectorAll('.accordion-btn').forEach(b => {
+                b.classList.remove('open');
+                const i = b.querySelector('i');
+                if (i) i.style.transform = 'rotate(0deg)';
+            });
+            
+            // Abrir el clickeado si estaba cerrado
+            if (!isOpen) {
+                content.classList.add('open');
+                btn.classList.add('open');
+            }
+        }
+        // ====== FIN FUNCIÓN ACORDEONES ======
     </script>
 </body>
-</html>
+</html> 
